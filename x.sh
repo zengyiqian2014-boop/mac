@@ -1,192 +1,124 @@
 #!/bin/bash
+# x.sh: Generate full website directly in current directory, ready for GitHub Pages
+
 echo "🌿 Deleting old website files..."
-rm -rf index.html css js civilisations pages
+rm -rf civilisations pages css js
 
 echo "🌿 Creating directories..."
-mkdir -p css js civilisations/indus civilisations/egypt civilisations/greece pages
+mkdir -p civilisations/indus
+mkdir -p civilisations/egypt
+mkdir -p civilisations/greece
+mkdir -p pages/solution
+mkdir -p css
+mkdir -p js
 
 echo "🌿 Writing CSS..."
-cat > css/style.css << 'EOF'
-body { margin:0; font-family:Arial,sans-serif; background:#f9f9f9; color:#333; }
-header { background:#006400; color:white; padding:10px 20px; }
-header nav a { color:white; text-decoration:none; margin-right:20px; }
-header nav a:hover { text-decoration:underline; }
-.hero { background:linear-gradient(to right,#004d00,#008000); color:white; text-align:center; padding:80px 20px; background-size:cover; }
-.box { background:white; margin:40px auto; padding:20px; width:90%; max-width:1200px; box-shadow:0 4px 6px rgba(0,0,0,0.1); border-radius:8px; opacity:0; animation:fadeIn 1s forwards; }
-.box:nth-of-type(2) {animation-delay:1s;}
-.box:nth-of-type(3) {animation-delay:1.5s;}
-.box h2 { margin-top:0; }
-footer { background:#222; color:#ccc; text-align:center; padding:10px 0; margin-top:40px; }
-a.external { color:#006400; text-decoration:underline; }
-a.external:hover { color:#004d00; }
-@keyframes fadeIn { to { opacity:1; } }
+cat > css/style.css <<'EOF'
+body { font-family: Arial, sans-serif; background-color: #e6f2e6; color: #003300; margin:0; padding:0;}
+header { background-color: #339966; padding:20px; color: white; text-align:center;}
+header nav a { color: white; margin: 0 15px; text-decoration:none; font-weight:bold;}
+section { padding: 20px; margin:10px;}
+h1,h2,h3 { color: #004d00;}
+footer { background-color: #339966; color:white; text-align:center; padding:10px;}
+article { background-color: #f0fff0; margin:10px 0; padding:15px; border-radius:10px; box-shadow:2px 2px 5px rgba(0,0,0,0.2);}
 EOF
 
 echo "🌿 Writing JS..."
-cat > js/main.js << 'EOF'
-// Fade-in animation placeholder
-document.addEventListener('DOMContentLoaded', () => {});
+cat > js/main.js <<'EOF'
+// Placeholder for potential animations or interactivity
+console.log("JS loaded: ready for animations.");
 EOF
 
-echo "🌿 Writing Home page..."
-cat > index.html << 'EOF'
+echo "🌿 Writing root index.html..."
+cat > index.html <<'EOF'
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Home - Sustainability</title>
+<title>Learning From The Past: Sustainability of Ancient Civilisations</title>
 <link rel="stylesheet" href="css/style.css">
-<script defer src="js/main.js"></script>
+<script src="js/main.js"></script>
 </head>
 <body>
 <header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="civilisations/index.html">Civilisations</a>
-    <a href="pages/solution.html">Solution</a>
-  </nav>
+    <h1>Learning From The Past: Sustainability of Ancient Civilisations</h1>
+    <nav>
+        <a href="civilisations/indus/index.html">Indus Valley</a>
+        <a href="civilisations/egypt/index.html">Ancient Egypt</a>
+        <a href="civilisations/greece/index.html">Ancient Greece</a>
+        <a href="pages/solution/index.html">Solution</a>
+    </nav>
 </header>
-<div class="hero">
-  <h1>Learning from the Past</h1>
-  <p>Sustainability of Ancient Civilisations</p>
-</div>
-<div class="box">
-  <h2>Indus Valley</h2>
-  <p>Urban planning, natural lighting, and ventilation for sustainable living.</p>
-  <p>Learn more: <a class="external" href="http://www.history.alberta.ca/energyheritage/energy/hydro-power/hydro-power-in-ancient-times.aspx" target="_blank">Housing architecture using natural lighting and cooling</a></p>
-</div>
-<div class="box">
-  <h2>Ancient Egypt</h2>
-  <p>Basin irrigation from the Nile River to water crops efficiently.</p>
-  <p>Learn more: <a class="external" href="https://ancientengrtech.wisc.edu/ancient-egypt-water-engineering/" target="_blank">Ancient Egyptian water engineering</a></p>
-</div>
-<div class="box">
-  <h2>Ancient Greece</h2>
-  <p>Hydropower used for laborious tasks and early mechanical innovations.</p>
-  <p>Learn more: <a class="external" href="http://www.history.alberta.ca/energyheritage/energy/hydro-power/hydro-power-in-ancient-times.aspx" target="_blank">Ancient Greek hydropower</a></p>
-</div>
+
+<section>
+    <h2>Introduction</h2>
+    <p>This website explores how ancient civilizations implemented sustainable practices in architecture, agriculture, and energy management. By learning from their strategies, modern societies can develop innovative solutions to address current environmental challenges in urban contexts like Singapore, combining technology with environmental stewardship and resource efficiency.</p>
+</section>
+
 <footer>
-© 2026 Made by Eric, All rights reserved
+    &copy; 2026 Made by Eric, All rights reserved
 </footer>
 </body>
 </html>
 EOF
 
-# Civilisations index
-cat > civilisations/index.html << 'EOF'
+# Function to create a civilisation page
+generate_civilisation_page () {
+local name=$1
+local path=$2
+local content="$3"
+cat > "$path/index.html" <<EOF
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Civilisations</title>
-<link rel="stylesheet" href="../css/style.css">
-<script defer src="../js/main.js"></script>
-</head>
-<body>
-<header>
-  <nav>
-    <a href="../index.html">Home</a>
-    <a href="index.html">Civilisations</a>
-    <a href="../pages/solution.html">Solution</a>
-  </nav>
-</header>
-<div class="hero">
-  <h1>Ancient Civilisations</h1>
-  <p>Discover sustainable ideas from the past</p>
-</div>
-<div class="box"><a href="indus/index.html">Indus Valley</a></div>
-<div class="box"><a href="egypt/index.html">Ancient Egypt</a></div>
-<div class="box"><a href="greece/index.html">Ancient Greece</a></div>
-<footer>
-© 2026 Made by Eric, All rights reserved
-</footer>
-</body>
-</html>
-EOF
-
-# Civilisation pages (Indus, Egypt, Greece)
-for civ in indus egypt greece; do
-cat > civilisations/$civ/index.html << EOF
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>${civ^}</title>
+<title>$name</title>
 <link rel="stylesheet" href="../../css/style.css">
-<script defer src="../../js/main.js"></script>
+<script src="../../js/main.js"></script>
 </head>
 <body>
 <header>
-  <nav>
-    <a href="../index.html">Civilisations</a>
-    <a href="../../index.html">Home</a>
-    <a href="../../pages/solution.html">Solution</a>
-  </nav>
+<h1>$name</h1>
 </header>
-<div class="hero">
-  <h1>${civ^} Civilization</h1>
-  <p>Insights on sustainability and practical lessons</p>
-</div>
-<div class="box">
-  <h2>Background</h2>
-  <p>Detailed history and sustainable practices of the ${civ^} civilization, including urban planning, water management, and energy efficiency.</p>
-  <p>Reference: <a class="external" target="_blank" href="https://www.futurelearn.com/info/courses/sustainable-practices-in-food-service/0/steps/232799">A Brief History of Sustainability</a></p>
-</div>
-<div class="box">
-  <h2>Lessons for Singapore</h2>
-  <p>How Singapore can adapt ideas like efficient water use, natural cooling, and renewable energy inspired by ${civ^} practices.</p>
-  <p>Video / Lecture reference: <a class="external" target="_blank" href="https://www.youtube.com/">Watch related content</a></p>
-</div>
+<section>
+<p>$content</p>
+</section>
 <footer>
-© 2026 Made by Eric, All rights reserved
+&copy; 2026 Made by Eric, All rights reserved
 </footer>
 </body>
 </html>
 EOF
-done
+}
 
-# Solution page
-cat > pages/solution.html << 'EOF'
+echo "🌿 Writing civilisation pages..."
+generate_civilisation_page "Indus Valley Civilization" "civilisations/indus" "The Indus Valley Civilization implemented sustainable urban planning with multi-story houses using natural light and ventilation. Drainage systems and public baths reflect resource management expertise. By studying these methods, modern urban planners can integrate ancient sustainable practices into contemporary eco-friendly architecture, creating energy-efficient and resilient cities."
+generate_civilisation_page "Ancient Egypt" "civilisations/egypt" "Ancient Egypt used sophisticated irrigation with canals, basins, and water-lifting devices like the shadoof. The Nilometer enabled flood prediction and water control. These innovations allowed consistent agriculture and water management. Modern cities can learn from these techniques to manage water sustainably and support urban agriculture effectively."
+generate_civilisation_page "Ancient Greece" "civilisations/greece" "Greeks innovated in hydro-power, using waterwheels to mechanize milling and other tasks. Overshot waterwheels converted kinetic energy efficiently. Their technologies highlight renewable energy use and mechanization. These concepts inform modern hydroelectric solutions, emphasizing efficiency and sustainability for industrial and urban applications."
+
+echo "🌿 Writing solution page..."
+cat > pages/solution/index.html <<'EOF'
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Solution Ideas</title>
-<link rel="stylesheet" href="../css/style.css">
-<script defer src="../js/main.js"></script>
+<title>Solution</title>
+<link rel="stylesheet" href="../../css/style.css">
+<script src="../../js/main.js"></script>
 </head>
 <body>
 <header>
-  <nav>
-    <a href="../index.html">Home</a>
-    <a href="../civilisations/index.html">Civilisations</a>
-    <a href="solution.html">Solution</a>
-  </nav>
+<h1>Proposed Sustainability Solutions for Singapore</h1>
 </header>
-<div class="hero">
-  <h1>Sustainability Solutions for Singapore</h1>
-  <p>Inspired by ancient civilisations</p>
-</div>
-<div class="box">
-  <h2>Water Management</h2>
-  <p>Adopt basin irrigation inspired by Ancient Egypt to optimize water usage in urban gardens and schools.</p>
-  <p>More info: <a class="external" target="_blank" href="https://ancientengrtech.wisc.edu/ancient-egypt-water-engineering/">Ancient Egypt Water Engineering</a></p>
-</div>
-<div class="box">
-  <h2>Energy Efficiency</h2>
-  <p>Use hydropower and renewable energy methods inspired by Ancient Greece for sustainable school facilities.</p>
-  <p>More info: <a class="external" target="_blank" href="http://www.history.alberta.ca/energyheritage/energy/hydro-power/hydro-power-in-ancient-times.aspx">Greek Hydropower</a></p>
-</div>
-<div class="box">
-  <h2>Urban Cooling</h2>
-  <p>Building designs with natural ventilation inspired by Indus Valley architecture for sustainable construction in Singapore.</p>
-  <p>More info: <a class="external" target="_blank" href="http://www.history.alberta.ca/energyheritage/energy/hydro-power/hydro-power-in-ancient-times.aspx">Indus Valley Housing Techniques</a></p>
-</div>
+<section>
+<p>Inspired by ancient civilizations, these solutions address Singapore's water management and energy sustainability challenges. Methods include advanced irrigation systems inspired by Egypt, efficient building designs inspired by the Indus Valley, and renewable energy techniques inspired by Greece. These strategies are feasible, scalable, and promote long-term environmental stewardship.</p>
+</section>
 <footer>
-© 2026 Made by Eric, All rights reserved
+&copy; 2026 Made by Eric, All rights reserved
 </footer>
 </body>
 </html>
 EOF
 
-echo "✅ Website generation complete!"
+echo "✅ Website files generated directly in current directory!"
+echo "You can now push all files to your GitHub repository root or gh-pages branch for Pages deployment."
