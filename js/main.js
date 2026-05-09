@@ -1,2 +1,7 @@
-// Placeholder for potential animations or interactivity
-console.log("JS loaded: ready for animations.");
+document.addEventListener('DOMContentLoaded', () => {
+  const articles = document.querySelectorAll('article');
+  articles.forEach((article,index) => {
+    article.style.animationDelay = `${index*0.3}s`;
+    article.classList.add('fadeIn');
+  });
+});
