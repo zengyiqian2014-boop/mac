@@ -17,6 +17,8 @@ header nav a:hover { text-decoration:underline; }
 .box:nth-of-type(3) {animation-delay:1.5s;}
 .box h2 { margin-top:0; }
 footer { background:#222; color:#ccc; text-align:center; padding:10px 0; margin-top:40px; }
+a.external { color:#006400; text-decoration:underline; }
+a.external:hover { color:#004d00; }
 @keyframes fadeIn { to { opacity:1; } }
 EOF
 
@@ -50,15 +52,18 @@ cat > index.html << 'EOF'
 </div>
 <div class="box">
   <h2>Indus Valley</h2>
-  <p>The Indus Valley civilisation (c. 3300–1300 BCE) focused on urban planning, drainage systems, and natural ventilation to live sustainably.</p>
+  <p>Urban planning, natural lighting, and ventilation for sustainable living.</p>
+  <p>Learn more: <a class="external" href="http://www.history.alberta.ca/energyheritage/energy/hydro-power/hydro-power-in-ancient-times.aspx" target="_blank">Housing architecture using natural lighting and cooling</a></p>
 </div>
 <div class="box">
   <h2>Ancient Egypt</h2>
-  <p>Ancient Egyptians used basin irrigation from the Nile to water crops efficiently and store water for dry periods.</p>
+  <p>Basin irrigation from the Nile River to water crops efficiently.</p>
+  <p>Learn more: <a class="external" href="https://ancientengrtech.wisc.edu/ancient-egypt-water-engineering/" target="_blank">Ancient Egyptian water engineering</a></p>
 </div>
 <div class="box">
   <h2>Ancient Greece</h2>
-  <p>Greeks harnessed hydropower for laborious tasks and early mechanical innovations.</p>
+  <p>Hydropower used for laborious tasks and early mechanical innovations.</p>
+  <p>Learn more: <a class="external" href="http://www.history.alberta.ca/energyheritage/energy/hydro-power/hydro-power-in-ancient-times.aspx" target="_blank">Ancient Greek hydropower</a></p>
 </div>
 <footer>
 © 2026 Made by Eric, All rights reserved
@@ -99,7 +104,7 @@ cat > civilisations/index.html << 'EOF'
 </html>
 EOF
 
-# Civilisation pages (Indus, Egypt, Greece) with rich text content
+# Civilisation pages (Indus, Egypt, Greece)
 for civ in indus egypt greece; do
 cat > civilisations/$civ/index.html << EOF
 <!DOCTYPE html>
@@ -120,15 +125,17 @@ cat > civilisations/$civ/index.html << EOF
 </header>
 <div class="hero">
   <h1>${civ^} Civilization</h1>
-  <p>Insights on sustainability</p>
+  <p>Insights on sustainability and practical lessons</p>
 </div>
 <div class="box">
   <h2>Background</h2>
-  <p>Detailed history and sustainable practices used by ${civ^} civilization. Example: long-term water management, urban planning, energy efficiency, and community organization.</p>
+  <p>Detailed history and sustainable practices of the ${civ^} civilization, including urban planning, water management, and energy efficiency.</p>
+  <p>Reference: <a class="external" target="_blank" href="https://www.futurelearn.com/info/courses/sustainable-practices-in-food-service/0/steps/232799">A Brief History of Sustainability</a></p>
 </div>
 <div class="box">
   <h2>Lessons for Singapore</h2>
-  <p>How modern Singapore can learn from these ancient methods for sustainability in urban planning, energy use, and agriculture.</p>
+  <p>How Singapore can adapt ideas like efficient water use, natural cooling, and renewable energy inspired by ${civ^} practices.</p>
+  <p>Video / Lecture reference: <a class="external" target="_blank" href="https://www.youtube.com/">Watch related content</a></p>
 </div>
 <footer>
 © 2026 Made by Eric, All rights reserved
@@ -162,15 +169,18 @@ cat > pages/solution.html << 'EOF'
 </div>
 <div class="box">
   <h2>Water Management</h2>
-  <p>Implement basin irrigation inspired by Ancient Egypt to optimize water usage in urban gardens and schools.</p>
+  <p>Adopt basin irrigation inspired by Ancient Egypt to optimize water usage in urban gardens and schools.</p>
+  <p>More info: <a class="external" target="_blank" href="https://ancientengrtech.wisc.edu/ancient-egypt-water-engineering/">Ancient Egypt Water Engineering</a></p>
 </div>
 <div class="box">
   <h2>Energy Efficiency</h2>
-  <p>Adopt hydropower and renewable energy methods inspired by Ancient Greece for sustainable school facilities.</p>
+  <p>Use hydropower and renewable energy methods inspired by Ancient Greece for sustainable school facilities.</p>
+  <p>More info: <a class="external" target="_blank" href="http://www.history.alberta.ca/energyheritage/energy/hydro-power/hydro-power-in-ancient-times.aspx">Greek Hydropower</a></p>
 </div>
 <div class="box">
   <h2>Urban Cooling</h2>
-  <p>Use natural ventilation and building designs inspired by Indus Valley architecture for sustainable construction in Singapore.</p>
+  <p>Building designs with natural ventilation inspired by Indus Valley architecture for sustainable construction in Singapore.</p>
+  <p>More info: <a class="external" target="_blank" href="http://www.history.alberta.ca/energyheritage/energy/hydro-power/hydro-power-in-ancient-times.aspx">Indus Valley Housing Techniques</a></p>
 </div>
 <footer>
 © 2026 Made by Eric, All rights reserved
