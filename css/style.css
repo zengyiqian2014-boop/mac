@@ -2,12 +2,10 @@ body { margin:0; font-family:Arial,sans-serif; background:#f9f9f9; color:#333; }
 header { background:#006400; color:white; padding:10px 20px; }
 header nav a { color:white; text-decoration:none; margin-right:20px; }
 header nav a:hover { text-decoration:underline; }
-.hero { background:linear-gradient(to right,#004d00,#008000); color:white; text-align:center; padding:80px 20px; background-size:cover; background-attachment:fixed; }
+.hero { background:linear-gradient(to right,#004d00,#008000); color:white; text-align:center; padding:80px 20px; background-size:cover; }
 .box { background:white; margin:40px auto; padding:20px; width:90%; max-width:1200px; box-shadow:0 4px 6px rgba(0,0,0,0.1); border-radius:8px; opacity:0; animation:fadeIn 1s forwards; }
 .box:nth-of-type(2) {animation-delay:1s;}
 .box:nth-of-type(3) {animation-delay:1.5s;}
 .box h2 { margin-top:0; }
 footer { background:#222; color:#ccc; text-align:center; padding:10px 0; margin-top:40px; }
 @keyframes fadeIn { to { opacity:1; } }
-.carousel { width:100%; max-width:1000px; height:auto; display:block; margin:10px auto; }
-.video { width:100%; max-width:1000px; height:500px; display:block; margin:10px auto; }

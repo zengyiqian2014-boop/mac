@@ -1,2 +1,2 @@
-// Placeholder for future interactivity
+// Fade-in animation placeholder
 document.addEventListener('DOMContentLoaded', () => {});
