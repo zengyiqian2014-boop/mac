@@ -1,83 +1,78 @@
 #!/bin/bash
 
-echo "🌿 Reset project..."
-rm -rf pages css js index.html
+echo "🌿 Rebuilding full website..."
 
-mkdir -p pages/indus pages/egypt pages/greece pages/solutions css js
+rm -rf pages css index.html
 
-# ================= CSS（华丽展览风） =================
+mkdir -p pages/solutions css
+
+# ================= CSS =================
 cat > css/style.css <<'EOF'
-body {
-  font-family: Arial, sans-serif;
+body{
+  font-family:Arial;
+  margin:0;
   background:#012b1a;
   color:#fff;
-  margin:0;
 }
 
-header {
-  background: linear-gradient(90deg,#025a36,#013d24);
+header{
+  background:linear-gradient(90deg,#026440,#013d24);
   padding:25px;
   text-align:center;
   position:sticky;
   top:0;
-  z-index:10;
 }
 
-header h1 {
-  font-size:2.3em;
+header h1{
   margin:0;
-  letter-spacing:1px;
+  font-size:2.3em;
 }
 
-nav {
-  text-align:center;
+nav{
   background:#0a3a22;
+  text-align:center;
   padding:10px;
 }
 
-nav a {
+nav a{
   color:#fff;
   margin:0 15px;
   text-decoration:none;
   font-weight:bold;
 }
 
-nav a:hover {
+nav a:hover{
   color:#00ffcc;
 }
 
-section {
+section{
   max-width:1100px;
-  margin:25px auto;
+  margin:20px auto;
   padding:20px;
-  background:#144d2a;
-  border-radius:15px;
-  box-shadow:0 0 25px rgba(0,0,0,0.6);
+}
+
+.card{
+  background:#1b5a32;
+  padding:18px;
+  margin:18px 0;
+  border-radius:14px;
   animation:fade 1s ease-in;
 }
 
-article {
-  background:#1b5a32;
-  padding:20px;
-  margin:15px 0;
-  border-radius:12px;
-}
-
-img {
-  width:55%;
+.card img{
+  width:35%;
   border-radius:10px;
-  margin-top:10px;
-  display:block;
+  margin-bottom:10px;
 }
 
-iframe {
+.card iframe{
   width:100%;
   height:420px;
-  margin-top:15px;
   border-radius:12px;
+  margin:15px 0;
 }
 
-footer {
+footer{
   position:fixed;
   bottom:0;
   width:100%;
@@ -86,9 +81,9 @@ footer {
   padding:10px;
 }
 
-@keyframes fade {
-  from {opacity:0; transform:translateY(10px);}
-  to {opacity:1; transform:translateY(0);}
+@keyframes fade{
+  from{opacity:0;transform:translateY(10px);}
+  to{opacity:1;transform:translateY(0);}
 }
 EOF
 
@@ -97,195 +92,30 @@ cat > index.html <<'EOF'
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sustainability Project</title>
+<title>Solutions</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<header><h1>Ancient Civilizations & Sustainability</h1></header>
+<header>
+<h1>Modern Sustainability Solutions</h1>
+</header>
 
 <nav>
 <a href="index.html">Home</a>
-<a href="pages/indus/index.html">Indus</a>
-<a href="pages/egypt/index.html">Egypt</a>
-<a href="pages/greece/index.html">Greece</a>
 <a href="pages/solutions/index.html">Solutions</a>
 </nav>
 
 <section>
-<article>
-<h2>Overview (Key Ideas)</h2>
-
-<ul>
-<li>Ancient civilizations built sustainability through water management systems.</li>
-<li>Indus Valley used grid cities and drainage systems.</li>
-<li>Egypt controlled Nile flooding using irrigation basins.</li>
-<li>Greece developed early hydropower systems.</li>
-<li>Nature-based engineering was key to survival.</li>
-<li>Singapore can learn water reuse + urban planning.</li>
-</ul>
-
-<iframe src="https://www.youtube.com/embed/9Jb0bZxQ"></iframe>
-
-<img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=900">
-
-</article>
-</section>
-
-<footer>Project Website</footer>
-
-</body>
-</html>
-EOF
-
-# ================= INDUS =================
-cat > pages/indus/index.html <<'EOF'
-<!DOCTYPE html>
-<html>
-<head>
-<title>Indus Valley</title>
-<link rel="stylesheet" href="../../css/style.css">
-</head>
-<body>
-
-<header><h1>Indus Valley Civilization</h1></header>
-
-<nav>
-<a href="../../index.html">Home</a>
-<a href="index.html">Indus</a>
-<a href="../egypt/index.html">Egypt</a>
-<a href="../greece/index.html">Greece</a>
-<a href="../solutions/index.html">Solutions</a>
-</nav>
-
-<section>
-
-<article>
-<h2>Key Points</h2>
-<ul>
-<li>Grid-based city planning (Mohenjo-daro)</li>
-<li>Advanced drainage system</li>
-<li>Public wells for water access</li>
-<li>Standardized brick construction</li>
-<li>Hygiene-focused urban design</li>
-<li>Early sanitation engineering</li>
-</ul>
-</article>
-
-<article>
-<h2>Urban Design Insight</h2>
+<div class="card">
+<h2>Overview</h2>
 <p>
-Indus cities were designed with precision layout systems that improved efficiency, hygiene, and sustainability.
+Ancient civilizations such as the Indus Valley, Ancient Egypt, and Ancient Greece developed highly efficient sustainability systems based on water control, agriculture, and energy use. Modern Singapore adopts these principles and upgrades them with technology such as AI, sensors, and renewable energy integration.
 </p>
-<img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=900">
-</article>
-
-<iframe src="https://www.youtube.com/embed/VbYc8-b8S5o"></iframe>
-
+</div>
 </section>
 
-<footer>Indus Study</footer>
-
-</body>
-</html>
-EOF
-
-# ================= EGYPT =================
-cat > pages/egypt/index.html <<'EOF'
-<!DOCTYPE html>
-<html>
-<head>
-<title>Egypt</title>
-<link rel="stylesheet" href="../../css/style.css">
-</head>
-<body>
-
-<header><h1>Ancient Egypt</h1></header>
-
-<nav>
-<a href="../../index.html">Home</a>
-<a href="../indus/index.html">Indus</a>
-<a href="index.html">Egypt</a>
-<a href="../greece/index.html">Greece</a>
-<a href="../solutions/index.html">Solutions</a>
-</nav>
-
-<section>
-
-<article>
-<h2>Key Points</h2>
-<ul>
-<li>Nile annual flooding cycle</li>
-<li>Basin irrigation system</li>
-<li>Shadoof water lifting device</li>
-<li>Nilometer flood prediction</li>
-<li>Fertile silt farming system</li>
-<li>Season-based agriculture planning</li>
-</ul>
-</article>
-
-<article>
-<h2>Nile System</h2>
-<p>
-Egyptian agriculture depended entirely on controlled Nile flooding systems.
-</p>
-<img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=900">
-</article>
-
-<iframe src="https://www.youtube.com/embed/6D4g5PQ2Oi8"></iframe>
-
-</section>
-
-<footer>Egypt Study</footer>
-
-</body>
-</html>
-EOF
-
-# ================= GREECE =================
-cat > pages/greece/index.html <<'EOF'
-<!DOCTYPE html>
-<html>
-<head>
-<title>Greece</title>
-<link rel="stylesheet" href="../../css/style.css">
-</head>
-<body>
-
-<header><h1>Ancient Greece Hydropower</h1></header>
-
-<nav>
-<a href="../../index.html">Home</a>
-<a href="../indus/index.html">Indus</a>
-<a href="../egypt/index.html">Egypt</a>
-<a href="index.html">Greece</a>
-<a href="../solutions/index.html">Solutions</a>
-</nav>
-
-<section>
-
-<article>
-<h2>Key Points</h2>
-<ul>
-<li>Waterwheel mechanical energy</li>
-<li>Grain milling systems</li>
-<li>Gravity-powered overshot wheels</li>
-<li>Roman engineering influence</li>
-<li>Early renewable energy use</li>
-<li>Mechanical automation systems</li>
-</ul>
-</article>
-
-<article>
-<h2>Hydropower Concept</h2>
-<img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=900">
-</article>
-
-<iframe src="https://www.youtube.com/embed/5qap5aO4i9A"></iframe>
-
-</section>
-
-<footer>Greece Study</footer>
+<footer>Project</footer>
 
 </body>
 </html>
@@ -301,43 +131,97 @@ cat > pages/solutions/index.html <<'EOF'
 </head>
 <body>
 
-<header><h1>Modern Sustainability Solutions</h1></header>
+<header>
+<h1>Modern Sustainability Solutions</h1>
+</header>
 
 <nav>
 <a href="../../index.html">Home</a>
-<a href="../indus/index.html">Indus</a>
-<a href="../egypt/index.html">Egypt</a>
-<a href="../greece/index.html">Greece</a>
 <a href="index.html">Solutions</a>
 </nav>
 
 <section>
 
-<article>
-<h2>Key Ideas</h2>
-<ul>
-<li>Vertical farming systems</li>
-<li>Water recycling (NEWater model)</li>
-<li>Smart drainage infrastructure</li>
-<li>Green building design</li>
-<li>Renewable energy integration</li>
-<li>Urban sustainability planning</li>
-</ul>
-</article>
+<!-- 1 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800">
 
-<article>
-<h2>Modern Application</h2>
-<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=900">
-</article>
+<h2>1. Rainwater Harvesting Systems</h2>
+
+<iframe src="https://www.youtube.com/embed/9Jb0bZxQ"></iframe>
+
+<p>
+Rainwater harvesting is one of the most important sustainability systems in modern Singapore. Inspired by ancient civilizations such as the Indus Valley and early Egyptian water management systems, this method collects rainfall from rooftops, drains, and reservoirs. The collected water is stored, treated, and reused for non-drinking purposes. This reduces dependency on imported water and strengthens national resilience. In modern urban planning, decentralized water systems are essential because they reduce risk concentration. Singapore integrates advanced filtration and monitoring technologies to ensure safety and efficiency, making this system a core pillar of national sustainability strategy.
+</p>
+</div>
+
+<!-- 2 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?w=800">
+
+<h2>2. Vertical Farming Systems</h2>
+
+<iframe src="https://www.youtube.com/embed/5qap5aO4i9A"></iframe>
+
+<p>
+Vertical farming is a modern agricultural innovation that addresses land scarcity in Singapore. Inspired by ancient irrigation-based agriculture such as the Nile basin system, vertical farms use stacked layers and hydroponic systems to grow crops without soil. Controlled LED lighting, nutrient solutions, and climate regulation allow continuous food production throughout the year. This system reduces water usage by up to 90% compared to traditional farming. It also reduces transportation emissions since farms are located within urban environments. Vertical farming is a key solution for food security and sustainable urban development.
+</p>
+</div>
+
+<!-- 3 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800">
+
+<h2>3. Renewable Energy Integration</h2>
 
 <iframe src="https://www.youtube.com/embed/2p8X5F1"></iframe>
 
+<p>
+Singapore integrates renewable energy sources such as solar panels into urban infrastructure. Inspired by ancient hydropower systems used in Greece and Rome, modern renewable systems convert natural energy into usable electricity. Solar panels are installed on rooftops, buildings, and floating platforms. These systems reduce reliance on fossil fuels and support long-term energy sustainability. Although Singapore has limited land, innovative engineering solutions maximize surface usage. Renewable integration plays a critical role in achieving national carbon reduction goals.
+</p>
+</div>
+
+<!-- 4 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800">
+
+<h2>4. Smart Drainage Systems</h2>
+
+<iframe src="https://www.youtube.com/embed/6D4g5PQ2Oi8"></iframe>
+
+<p>
+Smart drainage systems in Singapore are inspired by ancient flood control techniques such as Egyptian basin irrigation and Indus urban planning. Modern systems use sensors, underground tunnels, and AI-based prediction models to control water flow during heavy rainfall. This prevents flooding in densely populated areas. Water is redirected into reservoirs for later use. The integration of real-time monitoring improves efficiency and reduces environmental risk. This represents a major advancement in urban water management systems.
+</p>
+</div>
+
+<!-- 5 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=800">
+
+<h2>5. Waste-to-Energy Systems</h2>
+
+<p>
+Waste-to-energy systems convert municipal waste into electricity through controlled incineration. This reduces landfill usage and generates renewable energy. Inspired by ancient resource efficiency principles, modern Singapore ensures that waste is not simply discarded but reused as a resource. Advanced filtration systems reduce emissions and ensure environmental safety. This system supports circular economy goals by recovering energy from materials that would otherwise be wasted.
+</p>
+</div>
+
+<!-- 6 -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?w=800">
+
+<h2>6. Circular Economy Systems</h2>
+
+<p>
+A circular economy ensures continuous reuse of materials instead of disposal. Singapore applies this model through water recycling (NEWater), electronic waste recovery, and construction material reuse. This reflects ancient civilizations’ resource efficiency practices, where waste minimization was essential for survival. Modern technology enhances this system through automation and data tracking, allowing efficient material lifecycle management.
+</p>
+</div>
+
 </section>
 
-<footer>Solutions</footer>
+<footer>Solutions Page</footer>
 
 </body>
 </html>
 EOF
 
-echo "✅ DONE - Fully stable, elegant, non-breaking website generated"
+echo "✅ DONE - Fully structured, elegant, stable solution website generated"
