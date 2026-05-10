@@ -1,74 +1,182 @@
-body{
+*{
   margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+body{
   font-family: "Georgia", serif;
-  background:#031a13;
-  color:#f2f2f2;
+  background:#03150f;
+  color:#f5f5f5;
+  overflow-x:hidden;
   line-height:1.9;
 }
 
+/* animated background */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0,255,170,0.07), transparent 25%),
+    radial-gradient(circle at 80% 30%, rgba(0,180,255,0.06), transparent 25%),
+    radial-gradient(circle at 50% 80%, rgba(0,255,170,0.05), transparent 25%);
+  animation:bgMove 12s infinite alternate ease-in-out;
+  z-index:-1;
+}
+
+@keyframes bgMove{
+  from{transform:translateY(0px);}
+  to{transform:translateY(-40px);}
+}
+
 header{
-  background:linear-gradient(90deg,#012b1d,#00140e);
-  padding:30px;
+  position:sticky;
+  top:0;
+  z-index:999;
+  backdrop-filter:blur(10px);
+  background:rgba(1,20,14,0.88);
+  border-bottom:1px solid rgba(0,255,200,0.15);
+  padding:20px;
   text-align:center;
-  letter-spacing:1px;
 }
 
 header h1{
-  margin:0;
-  font-size:2.3em;
+  font-size:2.2em;
+  letter-spacing:2px;
+  color:#dffff4;
 }
 
 nav{
-  background:#0b2f22;
-  text-align:center;
-  padding:12px;
+  margin-top:12px;
 }
 
 nav a{
-  color:#c8ffe6;
+  color:#b8ffe7;
   margin:0 14px;
   text-decoration:none;
-  font-weight:bold;
+  font-size:0.95em;
+  transition:0.3s;
 }
 
 nav a:hover{
-  text-decoration:underline;
+  color:#00ffd0;
+}
+
+.hero{
+  height:75vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px;
+  background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)),
+    url('https://upload.wikimedia.org/wikipedia/commons/c/c3/Mohenjo-daro_Sindh.jpeg');
+  background-size:cover;
+  background-position:center;
+}
+
+.hero-content{
+  max-width:850px;
+  animation:fadeUp 1.4s ease;
+}
+
+.hero h2{
+  font-size:3em;
+  margin-bottom:20px;
+}
+
+.hero p{
+  font-size:1.15em;
+  color:#d6fff2;
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 section{
-  max-width:1100px;
-  margin:50px auto;
-  padding:20px;
+  max-width:1200px;
+  margin:auto;
+  padding:60px 25px;
 }
 
 .card{
-  background:linear-gradient(145deg,#123f2d,#0c2c20);
+  background:linear-gradient(145deg,#103427,#0a2119);
+  border:1px solid rgba(0,255,200,0.12);
+  border-radius:18px;
   padding:30px;
-  margin:45px 0;
-  border-left:4px solid #00ffcc;
+  margin-bottom:45px;
+  transition:0.4s;
+  box-shadow:0 0 20px rgba(0,0,0,0.35);
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 30px rgba(0,255,200,0.12);
+}
+
+.card h2{
+  color:#9effdf;
+  margin-bottom:18px;
+  font-size:1.5em;
+}
+
+.card img{
+  width:100%;
+  max-height:420px;
+  object-fit:cover;
   border-radius:12px;
-  box-shadow:0 0 20px rgba(0,255,200,0.08);
+  margin-bottom:20px;
 }
 
-h2{
-  color:#9fffe0;
+.card p{
+  color:#f1f1f1;
+  font-size:1.02em;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:25px;
+}
+
+.highlight{
+  padding:25px;
+  border-radius:14px;
+  background:#0d2a20;
+  border:1px solid rgba(0,255,200,0.08);
+}
+
+.highlight h3{
+  color:#7effd8;
   margin-bottom:10px;
-  font-size:1.4em;
-}
-
-img{
-  width:58%;
-  border-radius:10px;
-  margin:15px 0;
-  display:block;
 }
 
 footer{
-  position:fixed;
-  bottom:0;
-  width:100%;
-  background:#00140e;
   text-align:center;
-  font-size:12px;
-  padding:10px;
+  padding:30px;
+  background:#02110c;
+  color:#8fcfb7;
+  margin-top:50px;
+}
+
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
+}
+
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
 }
