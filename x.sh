@@ -1,45 +1,45 @@
 #!/bin/bash
 
-echo "🏛️ Building MUSEUM-GRADE exhibition system..."
+echo "🏛️ Building NATIONAL MUSEUM 3D EXHIBITION SYSTEM..."
 
 rm -rf pages css index.html
 
 mkdir -p pages/indus pages/egypt pages/greece pages/solutions css
 
-# ================= MUSEUM CSS =================
+# ================= MUSEUM 3D CSS =================
 cat > css/style.css <<'EOF'
 body{
   margin:0;
   font-family: "Georgia", serif;
-  background:#0a1f16;
-  color:#f4f4f4;
-  line-height:1.8;
+  background: radial-gradient(circle at top,#0d2a1f,#000);
+  color:#f2f2f2;
+  overflow-x:hidden;
 }
 
 header{
-  background:linear-gradient(90deg,#013d24,#021a12);
-  padding:30px;
+  background:linear-gradient(90deg,#012d1c,#000);
+  padding:35px;
   text-align:center;
-  letter-spacing:1px;
   position:sticky;
   top:0;
   z-index:100;
+  box-shadow:0 0 30px rgba(0,255,180,0.2);
 }
 
 header h1{
   margin:0;
-  font-size:2.4em;
-  font-weight:300;
+  font-size:2.6em;
+  letter-spacing:2px;
 }
 
 nav{
-  background:#062b1c;
+  background:#061c13;
   text-align:center;
   padding:12px;
 }
 
 nav a{
-  color:#c8ffd9;
+  color:#bfffe0;
   margin:0 18px;
   text-decoration:none;
   font-family:sans-serif;
@@ -50,24 +50,30 @@ nav a:hover{
 }
 
 section{
-  max-width:1000px;
-  margin:40px auto;
+  max-width:1100px;
+  margin:60px auto;
   padding:20px;
 }
 
 .panel{
-  background:rgba(20,70,45,0.6);
-  border-left:3px solid #00ffcc;
-  padding:25px;
-  margin:40px 0;
-  border-radius:8px;
-  backdrop-filter: blur(4px);
-  animation:fade 1.2s ease-in;
+  background:linear-gradient(145deg,rgba(10,60,40,0.6),rgba(0,0,0,0.4));
+  border-left:4px solid #00ffcc;
+  padding:30px;
+  margin:60px 0;
+  border-radius:12px;
+
+  transform: perspective(900px) translateZ(0);
+  transition:0.6s;
+  box-shadow:0 0 40px rgba(0,255,180,0.08);
+}
+
+.panel:hover{
+  transform: perspective(900px) translateZ(20px) scale(1.01);
 }
 
 .panel img{
-  width:30%;
-  border-radius:6px;
+  width:28%;
+  border-radius:10px;
   margin-bottom:15px;
   opacity:0.9;
 }
@@ -75,25 +81,19 @@ section{
 .panel iframe{
   width:100%;
   height:520px;
-  margin:15px 0;
-  border:none;
-  border-radius:10px;
+  border-radius:12px;
+  margin:20px 0;
 }
 
 footer{
   position:fixed;
   bottom:0;
   width:100%;
-  background:#021a12;
+  background:#000;
   text-align:center;
   padding:12px;
   font-size:12px;
-  letter-spacing:1px;
-}
-
-@keyframes fade{
-  from{opacity:0;transform:translateY(20px);}
-  to{opacity:1;transform:translateY(0);}
+  color:#aaa;
 }
 EOF
 
@@ -102,35 +102,35 @@ cat > index.html <<'EOF'
 <!DOCTYPE html>
 <html>
 <head>
-<title>Museum Exhibition</title>
+<title>Museum 3D Exhibition</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header>
-<h1>ARCHITECTURES OF SUSTAINABILITY</h1>
+<h1>NATIONAL MUSEUM OF SUSTAINABILITY</h1>
 </header>
 
 <nav>
 <a href="index.html">Entrance</a>
-<a href="pages/indus/index.html">Indus Gallery</a>
-<a href="pages/egypt/index.html">Egypt Gallery</a>
+<a href="pages/indus/index.html">Indus Hall</a>
+<a href="pages/egypt/index.html">Hydrology Hall</a>
 <a href="pages/greece/index.html">Energy Hall</a>
-<a href="pages/solutions/index.html">Singapore Pavilion</a>
+<a href="pages/solutions/index.html">Future Wing</a>
 </nav>
 
 <section>
 
 <div class="panel">
-<h2>Curatorial Introduction</h2>
+<h2>Curatorial Statement</h2>
 <p>
-This exhibition examines the evolution of sustainability across ancient civilizations and its reinterpretation in modern urban systems. Rather than presenting history as isolated case studies, the exhibition frames each civilization as part of a continuous dialogue between environment, technology, and human adaptation. From the engineered cities of the Indus Valley to the hydrological mastery of Ancient Egypt and the mechanical innovations of Greco-Roman societies, early civilizations demonstrated a sophisticated understanding of ecological balance. These systems were not symbolic achievements but functional infrastructures designed for long-term survival within environmental constraints.
+This exhibition is structured as a spatial museum journey rather than a conventional web presentation. Visitors are guided through successive environmental civilizations that collectively represent humanity’s evolving relationship with water, energy, and urban sustainability. Each gallery functions as a thematic chamber, designed to simulate the experience of walking through a physical museum space. The Indus Hall introduces early urban planning intelligence, the Egyptian Hall explores hydrological adaptation systems, the Greek Hall demonstrates mechanical energy conversion, and the Singapore Pavilion concludes with modern sustainability integration. Together, these galleries form a continuous narrative of environmental engineering evolution.
 </p>
 </div>
 
 </section>
 
-<footer>Museum Exhibition System</footer>
+<footer>Museum 3D System</footer>
 
 </body>
 </html>
@@ -141,19 +141,19 @@ cat > pages/indus/index.html <<'EOF'
 <!DOCTYPE html>
 <html>
 <head>
-<title>Indus Gallery</title>
+<title>Indus Hall</title>
 <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
 
-<header><h1>INDUS VALLEY CIVILIZATION</h1></header>
+<header><h1>INDUS VALLEY – URBAN INTELLIGENCE HALL</h1></header>
 
 <nav>
 <a href="../../index.html">Entrance</a>
 <a href="index.html">Indus</a>
 <a href="../egypt/index.html">Egypt</a>
 <a href="../greece/index.html">Energy</a>
-<a href="../solutions/index.html">Singapore</a>
+<a href="../solutions/index.html">Future</a>
 </nav>
 
 <section>
@@ -162,19 +162,19 @@ cat > pages/indus/index.html <<'EOF'
 <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800">
 <iframe src="https://www.youtube.com/embed/VbYc8-b8S5o"></iframe>
 
-<h2>Urban Morphology and Environmental Logic</h2>
+<h2>Urban Systems as Early Environmental Computing</h2>
 <p>
-The Indus Valley Civilization represents one of the earliest known examples of systematically planned urban environments. Unlike contemporary civilizations that prioritized monumental architecture, Indus cities emphasized infrastructure, sanitation, and spatial efficiency. Archaeological evidence from Mohenjo-daro reveals a rigid grid system, indicating centralized planning and administrative coordination. Streets were aligned in orthogonal patterns, facilitating airflow, drainage, and human mobility within dense settlements.
+The Indus Valley Civilization represents a foundational moment in human urban development where city planning was executed with remarkable precision and systemic coherence. Rather than evolving organically, cities such as Mohenjo-daro were constructed using pre-defined spatial grids that regulated movement, sanitation, and resource distribution. This indicates the presence of administrative foresight and standardized engineering principles that governed construction at scale.
 <br><br>
-The drainage system is particularly significant in understanding Indus sustainability principles. Covered drainage channels connected individual households to a centralized wastewater system, demonstrating an advanced understanding of hygiene and disease prevention. Standardized baked bricks ensured structural consistency and scalability across urban expansion. Water management relied on distributed wells, reducing dependency on singular sources and increasing resilience against environmental variability.
+Drainage infrastructure was fully integrated into residential architecture, forming a city-wide sanitation network that functioned continuously beneath urban surfaces. This system not only minimized environmental contamination but also demonstrates early understanding of fluid dynamics and public health correlation. Additionally, decentralized water access via wells ensured equitable distribution of essential resources, reducing dependency on centralized supply points.
 <br><br>
-These characteristics suggest a civilization that prioritized long-term environmental stability over symbolic architectural expression, offering a foundational model for modern sustainable urban planning systems.
+Such characteristics reveal that the Indus Valley Civilization operated as an early form of environmental system engineering, where urban space was treated as a managed ecological interface rather than a purely residential environment.
 </p>
 </div>
 
 </section>
 
-<footer>Indus Gallery</footer>
+<footer>Indus Hall</footer>
 
 </body>
 </html>
@@ -185,19 +185,19 @@ cat > pages/egypt/index.html <<'EOF'
 <!DOCTYPE html>
 <html>
 <head>
-<title>Egypt Gallery</title>
+<title>Hydrology Hall</title>
 <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
 
-<header><h1>ANCIENT EGYPT</h1></header>
+<header><h1>ANCIENT EGYPT – HYDROLOGY SYSTEMS</h1></header>
 
 <nav>
 <a href="../../index.html">Entrance</a>
 <a href="../indus/index.html">Indus</a>
 <a href="index.html">Egypt</a>
 <a href="../greece/index.html">Energy</a>
-<a href="../solutions/index.html">Singapore</a>
+<a href="../solutions/index.html">Future</a>
 </nav>
 
 <section>
@@ -206,19 +206,19 @@ cat > pages/egypt/index.html <<'EOF'
 <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800">
 <iframe src="https://www.youtube.com/embed/6D4g5PQ2Oi8"></iframe>
 
-<h2>Nile Hydrological Intelligence System</h2>
+<h2>Nile-Based Environmental Governance</h2>
 <p>
-Ancient Egyptian civilization developed one of the most sophisticated hydrological management systems in antiquity, entirely structured around the annual flooding cycle of the Nile River. The predictability of inundation allowed Egyptians to construct basin irrigation systems that transformed seasonal water surges into agricultural productivity. Fields were compartmentalized using earthen embankments, enabling controlled flooding, soil saturation, and staged drainage.
+Ancient Egyptian civilization demonstrates one of the earliest large-scale integrations of environmental rhythm into societal organization. The Nile River’s predictable flood cycle served as a natural calibration system for agriculture, settlement planning, and resource allocation. Egyptian engineers developed basin irrigation systems that transformed seasonal inundation into controlled agricultural productivity.
 <br><br>
-The shadoof represents an early mechanical innovation designed to improve irrigation efficiency through counterweight-based energy transfer. Meanwhile, nilometers functioned as early environmental monitoring instruments, enabling predictive responses to hydrological variability. This integration of measurement, mechanical engineering, and environmental adaptation demonstrates a proto-scientific approach to sustainability.
+The shadoof mechanism introduced a mechanical advantage system that optimized human labor in water lifting operations, effectively increasing irrigation reach without additional energy consumption. Complementing this, nilometers functioned as hydrological measurement instruments, enabling predictive responses to environmental fluctuations. These systems collectively illustrate an early form of environmental data interpretation and adaptive resource management.
 <br><br>
-Egyptian water governance systems thus represent an early form of environmental intelligence, where natural cycles were not resisted but systematically integrated into societal infrastructure.
+Egyptian hydrological engineering thus represents a civilization-scale integration of natural cycles into structured governance systems.
 </p>
 </div>
 
 </section>
 
-<footer>Egypt Gallery</footer>
+<footer>Hydrology Hall</footer>
 
 </body>
 </html>
@@ -234,14 +234,14 @@ cat > pages/greece/index.html <<'EOF'
 </head>
 <body>
 
-<header><h1>GREEK & ROMAN ENERGY SYSTEMS</h1></header>
+<header><h1>GREECE – MECHANICAL ENERGY HALL</h1></header>
 
 <nav>
 <a href="../../index.html">Entrance</a>
 <a href="../indus/index.html">Indus</a>
 <a href="../egypt/index.html">Egypt</a>
 <a href="index.html">Energy</a>
-<a href="../solutions/index.html">Singapore</a>
+<a href="../solutions/index.html">Future</a>
 </nav>
 
 <section>
@@ -250,11 +250,11 @@ cat > pages/greece/index.html <<'EOF'
 <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800">
 <iframe src="https://www.youtube.com/embed/5qap5aO4i9A"></iframe>
 
-<h2>Hydropower and Mechanical Energy Conversion</h2>
+<h2>Hydropower and Early Mechanical Systems</h2>
 <p>
-Greco-Roman civilizations advanced early mechanical engineering through the development of hydropower systems, most notably waterwheels. These devices converted kinetic energy from flowing water into mechanical work, primarily for grain milling and industrial production. The overshot waterwheel, in particular, represents a significant advancement in energy efficiency by utilizing gravitational potential energy in addition to water flow.
+Greek and Roman civilizations advanced mechanical energy systems through the implementation of waterwheel technology. These systems converted hydrodynamic energy into mechanical motion, primarily used in grain milling operations and early industrial processing. The overshot waterwheel represented a significant advancement by incorporating gravitational force into energy conversion, thereby increasing efficiency compared to earlier designs.
 <br><br>
-This system reduced reliance on manual labor and enabled continuous industrial operation, marking an early transition toward mechanized production systems. Watermills were strategically located along rivers to maximize energy input consistency. Their widespread adoption reflects an early understanding of renewable energy utilization and mechanical optimization principles.
+This innovation reflects an early understanding of energy transformation principles and mechanical optimization. Watermills became essential infrastructure in agricultural economies, reducing manual labor dependency and increasing production scalability. These systems mark a critical transition from human-powered labor to mechanized industrial processes.
 </p>
 </div>
 
@@ -271,19 +271,19 @@ cat > pages/solutions/index.html <<'EOF'
 <!DOCTYPE html>
 <html>
 <head>
-<title>Singapore Pavilion</title>
+<title>Future Wing</title>
 <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
 
-<header><h1>SINGAPORE SUSTAINABILITY PAVILION</h1></header>
+<header><h1>SINGAPORE – FUTURE SUSTAINABILITY WING</h1></header>
 
 <nav>
 <a href="../../index.html">Entrance</a>
 <a href="../indus/index.html">Indus</a>
 <a href="../egypt/index.html">Egypt</a>
 <a href="../greece/index.html">Energy</a>
-<a href="index.html">Singapore</a>
+<a href="index.html">Future</a>
 </nav>
 
 <section>
@@ -292,22 +292,22 @@ cat > pages/solutions/index.html <<'EOF'
 <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800">
 <iframe src="https://www.youtube.com/embed/9Jb0bZxQ"></iframe>
 
-<h2>Contemporary Urban Sustainability Systems</h2>
+<h2>Modern Urban Sustainability Integration</h2>
 <p>
-Singapore represents a contemporary synthesis of ancient sustainability principles and modern technological systems. Faced with severe land and resource constraints, the city-state has developed integrated environmental infrastructures including rainwater harvesting networks, vertical agricultural systems, and smart drainage architectures. These systems collectively function as a closed-loop ecological framework designed to optimize resource efficiency.
+Singapore represents a contemporary synthesis of ancient environmental intelligence and modern technological infrastructure. Faced with extreme spatial and resource limitations, the city-state has developed integrated systems that mirror historical sustainability principles while incorporating advanced computational control. Rainwater harvesting networks, vertical agricultural systems, and sensor-based drainage infrastructure collectively form a closed-loop environmental management system.
 <br><br>
-Rainwater harvesting infrastructure captures precipitation for redistribution across urban systems, while vertical farming enables high-density food production independent of soil-based agriculture. Smart drainage systems utilize sensor-based monitoring and predictive analytics to manage extreme rainfall events, preventing urban flooding.
+These systems extend ancient principles of adaptive water management into digital governance frameworks, enabling real-time environmental response and optimization. Vertical farming replicates ancient irrigation efficiency within a multi-layered architectural context, while smart drainage systems emulate predictive hydrological monitoring analogous to ancient nilometer systems.
 <br><br>
-These innovations reflect a continuation of ancient environmental intelligence, demonstrating how historical sustainability principles can be reinterpreted through digital technologies to support modern urban resilience.
+This convergence of historical principles and modern engineering represents a new phase of urban sustainability evolution.
 </p>
 </div>
 
 </section>
 
-<footer>Singapore Pavilion</footer>
+<footer>Future Wing</footer>
 
 </body>
 </html>
 EOF
 
-echo "🏛️ MUSEUM-GRADE SITE COMPLETE (fully curatorial, 500+ narrative style, exhibition system ready)"
+echo "🏛️ NATIONAL MUSEUM 3D SYSTEM COMPLETE (FULL IMMERSIVE EDITION)"

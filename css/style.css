@@ -1,35 +1,35 @@
 body{
   margin:0;
   font-family: "Georgia", serif;
-  background:#0a1f16;
-  color:#f4f4f4;
-  line-height:1.8;
+  background: radial-gradient(circle at top,#0d2a1f,#000);
+  color:#f2f2f2;
+  overflow-x:hidden;
 }
 
 header{
-  background:linear-gradient(90deg,#013d24,#021a12);
-  padding:30px;
+  background:linear-gradient(90deg,#012d1c,#000);
+  padding:35px;
   text-align:center;
-  letter-spacing:1px;
   position:sticky;
   top:0;
   z-index:100;
+  box-shadow:0 0 30px rgba(0,255,180,0.2);
 }
 
 header h1{
   margin:0;
-  font-size:2.4em;
-  font-weight:300;
+  font-size:2.6em;
+  letter-spacing:2px;
 }
 
 nav{
-  background:#062b1c;
+  background:#061c13;
   text-align:center;
   padding:12px;
 }
 
 nav a{
-  color:#c8ffd9;
+  color:#bfffe0;
   margin:0 18px;
   text-decoration:none;
   font-family:sans-serif;
@@ -40,24 +40,30 @@ nav a:hover{
 }
 
 section{
-  max-width:1000px;
-  margin:40px auto;
+  max-width:1100px;
+  margin:60px auto;
   padding:20px;
 }
 
 .panel{
-  background:rgba(20,70,45,0.6);
-  border-left:3px solid #00ffcc;
-  padding:25px;
-  margin:40px 0;
-  border-radius:8px;
-  backdrop-filter: blur(4px);
-  animation:fade 1.2s ease-in;
+  background:linear-gradient(145deg,rgba(10,60,40,0.6),rgba(0,0,0,0.4));
+  border-left:4px solid #00ffcc;
+  padding:30px;
+  margin:60px 0;
+  border-radius:12px;
+
+  transform: perspective(900px) translateZ(0);
+  transition:0.6s;
+  box-shadow:0 0 40px rgba(0,255,180,0.08);
+}
+
+.panel:hover{
+  transform: perspective(900px) translateZ(20px) scale(1.01);
 }
 
 .panel img{
-  width:30%;
-  border-radius:6px;
+  width:28%;
+  border-radius:10px;
   margin-bottom:15px;
   opacity:0.9;
 }
@@ -65,23 +71,17 @@ section{
 .panel iframe{
   width:100%;
   height:520px;
-  margin:15px 0;
-  border:none;
-  border-radius:10px;
+  border-radius:12px;
+  margin:20px 0;
 }
 
 footer{
   position:fixed;
   bottom:0;
   width:100%;
-  background:#021a12;
+  background:#000;
   text-align:center;
   padding:12px;
   font-size:12px;
-  letter-spacing:1px;
-}
-
-@keyframes fade{
-  from{opacity:0;transform:translateY(20px);}
-  to{opacity:1;transform:translateY(0);}
+  color:#aaa;
 }
